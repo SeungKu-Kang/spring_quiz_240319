@@ -36,6 +36,83 @@
 		FROM
 			`real_estate`
 		WHERE
-			`rentPrice` &lt; #{rentPrice} 
+			<![CDATA[
+			`rentPrice` < #{rentPrice} 
+			]]>
  	</select>
+ 	<!--  3강 퀴즈 1-3번 -->
+ 	<select id="selectRealEstateListByAreaPrice" parameterType="map" resultType="com.quiz.lesson03.domain.RealEstate">
+ 		SELECT
+ 			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+		<![CDATA[
+			'type' = '매매'
+			AND 'area' >= #{area}
+			AND 'price' <= #{price}
+		]]>
+ 	</select>
+ 	
+ 	<!-- 3강 퀴즈 2-1번 -->
+ 	<insert id="insertRealEstate" parameterType="com.quiz.lesson03.domain.RealEstate">
+ 		INSERT INTO `real_estate`
+ 		(
+ 			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		values
+ 		(
+ 			#{realtorId}
+ 			,#{address}
+ 			,#{area}
+ 			,#{type}
+ 			,#{price}
+ 			,#{rentPrice}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 		
+ 	</insert>
+ 	
+ 	<!-- 3강 퀴즈 2-2번 -->
+ 	<insert id="insertRealEstateAsField" parameterType="com.quiz.lesson03.domain.RealEstate">
+ 		INSERT INTO `real_estate`
+ 		(
+ 			`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+ 		)
+ 		values
+ 		(
+ 			#{realtorId}
+ 			,#{address}
+ 			,#{area}
+ 			,#{type}
+ 			,#{price}
+ 			,#{rentPrice}
+ 			,NOW()
+ 			,NOW()
+ 		)
+ 		
+ 	</insert>
  </mapper>
