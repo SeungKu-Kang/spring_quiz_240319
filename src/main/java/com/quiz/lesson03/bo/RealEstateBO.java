@@ -36,8 +36,7 @@ public class RealEstateBO {
 		return realEstateMapper.insertRealEstate(realEstate);
 	}
 	
-	// input:
-	// output:
+
 //	address : 썅떼빌리버 오피스텔 814호
 //	area : 45
 //	type : 월세
@@ -46,5 +45,16 @@ public class RealEstateBO {
 	public int addRealEstateAsField(int realtorId , String address, int area, String type, int price, Integer rentPrice) {
 		return realEstateMapper.insertRealEstateAsField(realtorId, address, area, type, price, rentPrice);
 	}
+	
+	// input: id, type, price -> 변경시킬 파라미터들
+	// output: int (업데이트에 성공한 행의 개수)
+	public int updateRealEstateById(int id, String type, int price) {
+		return realEstateMapper.updateRealEstateById(id, type, price);
+	}
+	
+	public int deleteRealEstateById(int id) {
+		return realEstateMapper.deleteRealEstateById(id);
+	}
+	
 }
 
