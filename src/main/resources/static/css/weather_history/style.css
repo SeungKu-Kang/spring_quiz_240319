@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#wrap {
+	width:1200px;
+}
+
+.menu {
+	height:1000px;
+	background-color: cornflowerblue;
+}
+
+.menu-font {
+	color:white;
+	font-weight:bold;
+}
