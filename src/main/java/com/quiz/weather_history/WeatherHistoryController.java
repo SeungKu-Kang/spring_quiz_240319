@@ -34,21 +34,39 @@ public class WeatherHistoryController {
 		return "/weather_history/weatherList";
 	}
 	
-	// 날씨 추가 화면 /weather-history/add-weather-view
+	// 날씨 추가 화면 /weather_history/add-weather-view
 	@GetMapping("/add-weather-view")
 	public String addWeatherView() {
 		return "weather_history/addWeather";
 	}
-	
-	// 날씨 추가 기능 /weather-history/add-weather
+	// 날씨 추가 기능 /weather_history/add-weather
 	@PostMapping("/add-weather")
 	public String addWeather(
-			@RequestParam("date") LocalDate date,
+			//@RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") Date date,
+			@RequestParam("date") String date, // LocalDate여도 됨
 			@RequestParam("weather") String weather,
 			@RequestParam("temperatures") double temperatures,
 			@RequestParam("precipitation") double precipitation,
 			@RequestParam("microDust") String microDust,
 			@RequestParam("windSpeed") double windSpeed) {
-		return "";
+		
+		// db insert
+		
+		// db select
+		
+		// model 담기
+		
+		// 목록 이동
+		
+		// 위 과정 대신 redirect하면 된다.
+		
+		// --------------------------------
+		
+		// db insert
+		weatherHistoryBO.addWeatherHistory(date, weather, temperatures, precipitation, microDust, windSpeed);
+		// redirect => 날씨 목록
+		return "redirect:/weather_history/weather-history-view";
+		
+		
 	}
 }
