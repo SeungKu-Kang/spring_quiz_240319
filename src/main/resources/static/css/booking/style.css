@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.nav-link {
+	font-weight:bold;
+	color:white;
+}
+
+.nav-link:hover {
+	color:#000;
+}
+
+.menu {
+	background-color: #EF904C;
+	margin-top:20px;
+}
