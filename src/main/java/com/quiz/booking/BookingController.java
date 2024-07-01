@@ -24,6 +24,7 @@ public class BookingController {
 	// http://localhost:8080/booking/booking-list-view
 	@GetMapping("/booking-list-view")
 	public String bookingListView(Model model) {
+		
 		// db select => List<Booking>
 		List<Booking> bookingList = bookingBO.getBookingList();
 		
@@ -50,4 +51,8 @@ public class BookingController {
 	
 	// 예약조회 화면
 	// http://localhost:8080/booking/check-booking-view
+	@GetMapping("/check-booking-view")
+	public String checkBookingView() {
+		return "booking/checkBooking";
+	}
 }

@@ -2,10 +2,8 @@ package com.quiz.lesson02.domain;
 
 import java.time.LocalDateTime;
 
-// 일반 자바 빈
+// 일반 자바빈
 public class Store {
-
-	// workbench에서 desc로 조회
 	private int id;
 	private String name;
 	private String phoneNumber;
@@ -63,4 +61,5 @@ public class Store {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
 }

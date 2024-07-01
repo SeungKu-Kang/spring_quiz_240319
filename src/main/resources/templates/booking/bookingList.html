@@ -12,6 +12,7 @@
 </head>
 <body>
 	<div class="container text-center">
+		<!-- 화면 상단부 -->
 		<div class="display-4">통나무 펜션</div>
 		<section class="menu">
 			<ul class="nav justify-content-around">
@@ -29,6 +30,7 @@
 				</li>
 			</ul>
 		</section>
+		<!-- 예약목록 & 테이블 -->
 		<div>
 			<h3 class="text-dark font-weight-bold mt-5 mb-2">예약 목록 보기</h3>
 			
@@ -41,13 +43,34 @@
 						<th>숙박인원</th>
 						<th>전화번호</th>
 						<th>예약상태</th>
+						<th>(삭제)</th>
 					</tr>
 				</thead>
 				<tbody>
-					
+					<tr th:each="booking : ${bookingList}">
+						<td th:text="${booking.name}"></td>
+						<td th:text="${booking.date}"></td>
+						<td th:text="${booking.day}"></td>
+						<td th:text="${booking.headcount}"></td>
+						<td th:text="${booking.phoneNumber}"></td>
+						<td th:if="${booking.state == '확정'}" th:text="${booking.state}" class="text-success"></td>
+						<td th:if="${booking.state == '대기중'}" th:text="${booking.state}" class="text-info"></td>
+						<td>
+							<button type="button" class="del-btn btn btn-danger" th:data-booking-id="${booking.id}">삭제</button>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
+		
+		<footer class="text-left text-secondary">
+			<small>제주특별자치도 제주시 애월읍</small><br>
+			<small>사업자등록번호:111-22-255222/농어촌민박사업자지정/대표:김통목</small><br>
+			<small>Copyright 20XX tongnamu. All right reserved</small>
+		</footer>
 	</div>
+	<script>
+		
+	</script>
 </body>
 </html>
