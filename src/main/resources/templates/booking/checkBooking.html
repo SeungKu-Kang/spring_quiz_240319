@@ -82,26 +82,35 @@
 				
 				console.log(name);
 				console.log(phoneNumber);
-			});
 			
-			
-			
-			
- 			$.ajax({
-				// request
-				type:"POST"
-				, url:"/booking/check-booking"
-				, data:{"name":name, "phoneNumber":phoneNumber}
-				
-				// response
-				, success:function(data) {
-					// {"code":200, "result":"성공"}
+	 			$.ajax({
+					// request
+					type:"POST"
+					, url:"/booking/check-booking"
+					, data:{"name":name, "phoneNumber":phoneNumber}
 					
-				}
-				, error:function(error) {
-					alert("조회하는데 실패했습니다.");
-				}
-			}); 
+					// response
+					, success:function(data) {
+						if (data.code == 500) {
+							// 예약내역 없음
+							// {"code":500, "error_message":"예약 내역이 없습니다."}
+							alert("data.error_message");
+						} else if (data.code == 200) {
+							// 성공
+							// {"code":200, "result":{"id":3, "name":"신보람"...}}
+							alert("이름:" + data.result.name 
+									+ "\n날짜:" + data.result.date
+									+ "\n일수:" + data.result.day
+									+ "\n인원:" + data.result.headcount
+									+ "\n상태:" + data.result.state);
+						}
+						
+					}
+					, error:function(error) {
+						alert("조회하는데 실패했습니다.");
+					}
+				}); 
+			});
 		});
 	</script>
 </body>

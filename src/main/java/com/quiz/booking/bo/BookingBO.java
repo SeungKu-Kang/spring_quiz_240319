@@ -38,12 +38,18 @@ public class BookingBO {
 
 	}
 	
-	// input: 
-	// output: boolean
-	public boolean isDuplicationUrl(String name, String phoneNumber) {
-		// 중복 있음:List     중복 없음:[]
-		List<Booking> bookingList = bookingMapper.selectBookingListByName(name, phoneNumber);
-		// [] => false, 비어있지 않으면 => true
-		return bookingList.isEmpty() ? false : true;
+	// 이름과 번호로 조회하기
+	// input: name, phoneNumber
+	// output: Booking(최신) or null
+	public Booking getLatestBookingByNamePhoneNumber(String name , String phoneNumber) {
+		// 리스트가 없는 경우: [](null이 아님을 알아야함)   있는 경우: [booking1, booking2 ...]
+		List<Booking> bookingList = bookingMapper.selectBookingByNamePhoneNumber(name, phoneNumber);
+		// if문을 사용할 경우
+//		if (bookingList.isEmpty()) {
+//			return null;
+//		}
+		
+		// 삼항 연산자
+		return bookingList.isEmpty() ? null : bookingList.get(bookingList.size() - 1) ;
 	}
 }
