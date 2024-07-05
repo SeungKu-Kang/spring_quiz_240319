@@ -29,22 +29,22 @@ public class Lesson07Quiz02RestController {
 		return recruitRepository.findByCompanyId(1);
 	}
 	
-//	@GetMapping("/3")
-//	public List<RecruitEntity> select3() {
-//		
-//	}
-//	@GetMapping("/4")
-//	public List<RecruitEntity> select4() {
-//		
-//	}
-//	@GetMapping("/5")
-//	public List<RecruitEntity> select5() {
-//		
-//	}
-//	@GetMapping("/6")
-//	public List<RecruitEntity> select6() {
-//		
-//	}
+	@GetMapping("/3")
+	public List<RecruitEntity> select3() {
+		return recruitRepository.findByPositionAndType("웹 back-end 개발자", "정규직");
+	}
+	@GetMapping("/4")
+	public List<RecruitEntity> select4() {
+		return recruitRepository.findByTypeOrSalaryGreaterThan("정규직", 8999);
+	}
+	@GetMapping("/5")
+	public List<RecruitEntity> select5() {
+		return recruitRepository.findTop3ByOrderBySalaryDesc();
+	}
+	@GetMapping("/6")
+	public List<RecruitEntity> select6() {
+		return recruitRepository.findByRegionAndSalaryBetween("성남시 분당구",7000,8500);
+	}
 	
 	
 }
